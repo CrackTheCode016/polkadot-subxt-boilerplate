@@ -1,0 +1,8 @@
+[package]
+name = "subxt-boilerplate"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+subxt = "0.38.0"
+tokio = { version = "1.35", features = ["macros", "time", "rt-multi-thread"] }
