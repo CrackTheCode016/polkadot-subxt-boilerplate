@@ -25,14 +25,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/CrackTheCode016/polkadot-api-ts-boilerplate">
+  <a href="https://github.com/CrackTheCode016/polkadot-subxt-boilerplate">
     <img src="https://cryptologos.cc/logos/polkadot-new-dot-logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Subxt Rust Boilerplate</h3>
 
   <p align="center">
-    Quickly get started with experimenting with Subxt.
+    Quickly get started with experimenting with Subxt, a Rust library for interacting with Polkadot SDK-based blockchains.
     <br />
   </p>
 </div>
@@ -81,10 +81,8 @@ If you have a custom-built chain, such as one built with the "[Zero to Hero" gui
 
 ```rust
 // Change this:
-#[subxt::subxt(runtime_metadata_path = "./metadata/polkadot_asset_hub.scale")]
-pub mod assethub {}
-
-type AssetHubConfig = PolkadotConfig;
+#[subxt::subxt(runtime_metadata_path = "./metadata/polkadot_relay_chain.scale")]
+pub mod polkadot {}
 
 // To this:
 #[subxt::subxt(runtime_metadata_path = "./metadata/custom.scale")]
@@ -94,7 +92,7 @@ pub mod custom {}
 type CustomConfig = SubstrateConfig;
 ```
 
-3. Wherever `assethub` is used, change it to `custom`, and be sure to change `AssetHubConfig` to `CustomConfig`, i.e.,: 
+1. Wherever `polkadot` is used, change it to `custom`, and be sure to change `PolkadotConfig` to `CustomConfig`, i.e.,: 
 
 ```rust
 let api = OnlineClient::<CustomConfig>::from_url(
@@ -105,13 +103,15 @@ let api = OnlineClient::<CustomConfig>::from_url(
 let runtime_upgrade_query = custom::storage().system().last_runtime_upgrade();
 ```
 
+If you need to create a custom configuration that isn't the "generic" Substrate one, follow this [guide](https://docs.rs/subxt/latest/subxt/book/setup/config/index.html).
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/CrackTheCode016/polkadot-api-ts-boilerplate.svg?style=for-the-badge
-[contributors-url]: https://github.com/CrackTheCode016/polkadot-api-ts-boilerplate/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/CrackTheCode016/polkadot-api-ts-boilerplate.svg?style=for-the-badge
-[forks-url]: https://github.com/CrackTheCode016/polkadot-api-ts-boilerplate/network/members
-[stars-shield]: https://img.shields.io/github/stars/CrackTheCode016/polkadot-api-ts-boilerplate.svg?style=for-the-badge
-[stars-url]: https://github.com/CrackTheCode016/polkadot-api-ts-boilerplate/stargazers
-[issues-shield]: https://img.shields.io/github/issues/CrackTheCode016/polkadot-api-ts-boilerplate.svg?style=for-the-badge
-[issues-url]: https://github.com/CrackTheCode016/polkadot-api-ts-boilerplate/issues
+[contributors-shield]: https://img.shields.io/github/contributors/CrackTheCode016/polkadot-subxt-boilerplate.svg?style=for-the-badge
+[contributors-url]: https://github.com/CrackTheCode016/polkadot-subxt-boilerplate/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/CrackTheCode016/polkadot-subxt-boilerplate.svg?style=for-the-badge
+[forks-url]: https://github.com/CrackTheCode016/polkadot-subxt-boilerplate/network/members
+[stars-shield]: https://img.shields.io/github/stars/CrackTheCode016/polkadot-subxt-boilerplate.svg?style=for-the-badge
+[stars-url]: https://github.com/CrackTheCode016/polkadot-subxt-boilerplate/stargazers
+[issues-shield]: https://img.shields.io/github/issues/CrackTheCode016/polkadot-subxt-boilerplate.svg?style=for-the-badge
+[issues-url]: https://github.com/CrackTheCode016/polkadot-subxt-boilerplate/issues
